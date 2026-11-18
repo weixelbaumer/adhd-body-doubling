@@ -6,25 +6,6 @@ homepage: https://adhd-founder.com
 author: ADHD-founder.com
 license: MIT
 keywords: [adhd, body-doubling, focus-session, accountability, pomodoro, productivity, founders, neurodivergent, executive-function, task-initiation, procrastination, focus, micro-steps, dopamine]
-metadata:
-  clawdbot:
-    emoji: "🐱⚡"
-    tags: ["adhd", "body-doubling", "accountability", "founders", "focus", "neurodivergent", "executive-function", "productivity", "pomodoro", "startup"]
-    category: productivity
-    requires: {}
-    optional:
-      notifications: "For check-in reminders"
-      persistence: "For session history tracking"
-    examples:
-      - "/body-doubling start 25"
-      - "/body-doubling start 50"
-      - "/body-doubling stuck"
-      - "/body-doubling done"
-      - "I can't focus, help me get started"
-      - "I need a body double"
-      - "Help me work on this for 50 minutes"
-      - "I'm procrastinating and need accountability"
-    related_skills: ["adhd-founder-planner"]
 ---
 
 # ADHD Body Doubling Skill v2.1 🐱⚡
@@ -178,7 +159,7 @@ When TOTALLY blocked:
 
 ## Session History
 
-Sessions are tracked in: `~/.openclaw/skills/adhd-body-doubling/history/`
+Sessions are tracked in: `~/.hermes/data/adhd-body-doubling/history/` (override: `$BODY_DOUBLING_HISTORY_DIR`)
 
 Tracks: task category, time of day, energy levels, completion rate, what worked/didn't, dopamine menu usage.
 

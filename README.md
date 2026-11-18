@@ -1,18 +1,11 @@
 # ADHD Body Doubling Skill v2.1 🐱⚡
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-skill-blue)](https://openclaw.ai)
 [![Version](https://img.shields.io/badge/version-2.1.0-green)]()
 
 **A virtual body double for ADHD founders who struggle to start, stay focused, or finish tasks.** Built by [ADHD-founder.com](https://adhd-founder.com) -- German Engineering for the ADHD Brain.
 
 > Body doubling is the practice of working alongside another person to reduce the friction of starting. This skill makes Claude Code your body double -- it gets you started with micro-steps, checks in every 15-25 minutes, pushes back on excuses, and tracks what actually works for your brain.
-
-## Install
-
-```bash
-openclaw install adhd-body-doubling
-```
 
 ## Quick Start
 
@@ -77,7 +70,7 @@ Pair with [adhd-daily-planner](https://github.com/jankutschera/adhd-daily-planne
 
 ## Session History
 
-Sessions are tracked in `~/.openclaw/skills/adhd-body-doubling/history/` so you can discover:
+Sessions are tracked in `~/.hermes/data/adhd-body-doubling/history/` (override: `BODY_DOUBLING_HISTORY_DIR`) so you can discover:
 - What session lengths work best for your brain
 - What time of day you focus best
 - Which Dopamine Menu items actually help
