@@ -1,20 +1,21 @@
 ---
 name: adhd-body-doubling
-version: 2.1.0
+version: 2.1.1+hermes.1
 description: "Use when user wants body doubling/focus help. ADHD sessions."
-homepage: https://adhd-founder.com
-author: ADHD-founder.com
+homepage: https://github.com/weixelbaumer/adhd-body-doubling
+author: "Jan Kutschera / ADHD-founder.com (original); Stefan Weixelbaumer (Hermes port)"
 license: MIT
 keywords: [adhd, body-doubling, focus-session, accountability, pomodoro, productivity, founders, neurodivergent, executive-function, task-initiation, procrastination, focus, micro-steps, dopamine]
 metadata:
   hermes:
     tags: [adhd, body-doubling, focus, accountability, productivity]
     related_skills: [adhd-daily-planner]
+  upstream: "https://github.com/jankutschera/adhd-body-doubling (v2.1.1, Jan Kutschera / ADHD-founder.com, MIT)"
 ---
 
 # ADHD Body Doubling Skill v2.1 🐱⚡
 
-**Part of the [ADHD-founder.com](https://adhd-founder.com) Ecosystem**
+**Hermes Agent port of [adhd-body-doubling](https://github.com/jankutschera/adhd-body-doubling) by Jan Kutschera / [ADHD-founder.com](https://adhd-founder.com) (MIT)**
 *"German Engineering for the ADHD Brain"*
 
 ---
