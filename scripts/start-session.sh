@@ -36,7 +36,7 @@ show_help() {
   exit 0
 }
 
-if [ -z "$1" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+if [ -z "${1:-}" ] || [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
   show_help
 fi
 
