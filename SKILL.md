@@ -1,11 +1,15 @@
 ---
 name: adhd-body-doubling
 version: 2.1.0
-description: "This skill should be used when the user asks for body doubling, ADHD focus sessions, accountability while working, help getting started on a task, pomodoro-style work sessions, or says things like 'I can't focus', 'I'm stuck', 'help me start', 'I need accountability', 'body double with me', 'I keep procrastinating', 'I can't get started', or 'focus session'. Provides punk-style ADHD body doubling with micro-step protocols, frequent check-ins, dopamine resets, and session history tracking. Part of the ADHD-founder.com ecosystem."
+description: "Use when user wants body doubling/focus help. ADHD sessions."
 homepage: https://adhd-founder.com
 author: ADHD-founder.com
 license: MIT
 keywords: [adhd, body-doubling, focus-session, accountability, pomodoro, productivity, founders, neurodivergent, executive-function, task-initiation, procrastination, focus, micro-steps, dopamine]
+metadata:
+  hermes:
+    tags: [adhd, body-doubling, focus, accountability, productivity]
+    related_skills: [adhd-daily-planner]
 ---
 
 # ADHD Body Doubling Skill v2.1 🐱⚡
@@ -29,6 +33,28 @@ Provides punk-style body doubling sessions for ADHD founders that:
 **"Start > Finish"** - Every attempt counts
 **"No Shame Zone"** - Struggles are data, not failure
 **"Communicate"** - Push back, dig deeper, don't let excuses slide
+
+---
+
+## Hermes Agent Runtime (read first)
+
+This fork runs on [Hermes Agent](https://hermes-agent.nousresearch.com). Where the sections below differ, this one wins.
+
+**When to use:** body doubling, focus session, accountability while working, help starting a task, pomodoro-style work; "I can't focus", "I'm stuck", "help me start", "I keep procrastinating" — in any language (German, e.g.: "komm nicht in die Gänge", "kann nicht anfangen", "Fokus-Session").
+
+- **Invoke:** `/adhd-body-doubling start 50`. Hermes registers the skill name as the slash command, so every `/body-doubling <cmd>` below means `/adhd-body-doubling <cmd>`. Plain language works too.
+- **Language:** answer in the user's language and store it as `language` (ISO code, e.g. `de`) in the session JSON; the check-in messages use it. Keep the push-back; no shaming.
+- **History:** `$BODY_DOUBLING_HISTORY_DIR`, default `~/.hermes/data/adhd-body-doubling/history/`, one `<session_id>.json` per session, schema = the JSON in `scripts/start-session.sh`. `session_id` = `YYYYMMDD_HHMMSS_<4 hex>` (file-name order = time order). Hermes adds `language`, `checkin_minutes` and `cron_job_ids`.
+- **Check-ins are real cron jobs. Never announce a check-in that is not scheduled.** After micro-step 3, before "Do that NOW":
+  1. Write the session JSON: `timestamp` = now (UTC ISO), `duration_planned`, `checkin_minutes`, `language`, `duration_actual: null`, `aborted: false`, rest per schema.
+  2. Per minute `m` in `checkin_minutes`: `cronjob_manage` action=create, `schedule="in {m}m"`, `name="body-doubling {session_id} @{m}"`, `script="body_doubling_checkin.py"`, `no_agent=true`, `wrap_response="off"`, `prompt="body-doubling check-in ping"` (required on create, ignored by no_agent), no `deliver` (= this chat). Store the returned job IDs in `cron_job_ids`.
+  3. Then announce the timer with the real check-in times.
+- **checkin_minutes** (last entry = end ping): 15 → `[10, 15]` · 25 → `[15, 25]` · 50 → `[15, 35, 50]` · 90 → `[20, 45, 70, 90]` · otherwise every ≤ 25 min plus the end.
+- **What fires:** a macOS notification with sound (other systems: chat only) + the check-in text as a note in the session chat. No LLM call, so it also works when model quota is exhausted. The script stays silent unless a planned minute of the newest open session is due (±3 min), so leftover jobs never ping a later session.
+- **User answers a check-in:** run the check-in / push-back protocol; append to `check_ins`, increment `check_ins_completed`.
+- **done / abort:** `cronjob_manage` remove every ID in `cron_job_ids` (fired one-shots too, keeps the job list clean); then fill `duration_actual`, `energy_end`, `completion_rate`, `what_worked`, `what_didnt`, `dopamine_menu_used` and run the autopsy (done), or set `aborted: true` (abort).
+- **history:** read the JSON files and report patterns: best session length, time of day, completion by category, which dopamine items helped.
+- **Script install:** Hermes cron runs scripts only from `~/.hermes/scripts/`. Canonical copy: `scripts/body_doubling_checkin.py` in this skill; if `~/.hermes/scripts/body_doubling_checkin.py` is missing or differs, copy it there before scheduling.
 
 ---
 
