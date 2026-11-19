@@ -51,7 +51,8 @@ TEXT = {
             "- Was hast du erledigt?\n"
             "- Was blockiert gerade (falls was)?\n"
             "- Nächster Micro-Step?\n\n"
-            "Antworte im Session-Chat. Feststecken → „stuck“, Reset → „menu“."
+            "Antworte im Session-Chat oder tippe /adhd-body-doubling für Buttons.\n"
+            "Feststecken → „stuck“, Reset → „menu“."
         ),
     },
     "en": {
@@ -74,7 +75,8 @@ TEXT = {
             "- What did you complete?\n"
             "- What's the current blocker (if any)?\n"
             "- What's the next micro-step?\n\n"
-            'Reply in the session chat. Stuck → "stuck", reset → "menu".'
+            "Reply in the session chat or type /adhd-body-doubling for buttons.\n"
+            'Stuck → "stuck", reset → "menu".'
         ),
     },
 }
