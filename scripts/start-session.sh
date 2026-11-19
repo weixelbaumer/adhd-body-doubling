@@ -3,7 +3,7 @@ set -euo pipefail
 # ADHD Body Doubling v2.0 - Session Starter
 # Part of ADHD-founder.com ecosystem
 
-SESSION_DIR="${HOME}/.openclaw/skills/adhd-body-doubling/history"
+SESSION_DIR="${BODY_DOUBLING_HISTORY_DIR:-${HERMES_HOME:-${HOME}/.hermes}/data/adhd-body-doubling/history}"
 mkdir -p "$SESSION_DIR"
 
 echo "🐱⚡ ADHD BODY DOUBLING SESSION v2.0"
@@ -36,7 +36,7 @@ show_help() {
   exit 0
 }
 
-if [ -z "$1" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+if [ -z "${1:-}" ] || [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
   show_help
 fi
 

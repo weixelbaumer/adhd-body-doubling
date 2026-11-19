@@ -159,7 +159,7 @@ Honest questions when you're not making progress:
 
 ## NEW: Session History Tracking 📊
 
-Track every session in: `~/.openclaw/skills/adhd-body-doubling/history/`
+Track every session in: `~/.hermes/data/adhd-body-doubling/history/` (override: `$BODY_DOUBLING_HISTORY_DIR`)
 
 ### Data Captured
 - **Session metadata** - ID, timestamp, planned/actual duration
