@@ -14,6 +14,7 @@
 - **Check-ins actually happen:** the original only announces them. Here every planned check-in is a one-shot Hermes cron job running `scripts/body_doubling_checkin.py` (no LLM call) → macOS notification + check-in message in the session chat. Jobs left over from ended sessions stay silent.
 - **No OpenClaw coupling:** history in `~/.hermes/data/adhd-body-doubling/history/` (override: `BODY_DOUBLING_HISTORY_DIR`); OpenClaw metadata and install instructions removed.
 - **Hermes runtime rules** (SKILL.md): slash-command mapping, short description, trigger phrases (incl. German), session language for check-in texts (de/en).
+- **Button menu:** `/adhd-body-doubling` without arguments opens a Hermes `clarify` menu (duration + task, task choices from today's planner; during a session: status / stuck / done / abort). Commands with arguments run directly; without `clarify` a numbered list is shown.
 - **Bug fix:** `scripts/start-session.sh` crashed without arguments ("unbound variable").
 
 ## Install (Hermes Agent)
@@ -28,6 +29,7 @@ Hermes cron only runs scripts from `~/.hermes/scripts/`; the agent also copies i
 ## Quick Start
 
 ```
+/adhd-body-doubling             # Button menu: pick duration + task (in a session: status / stuck / done / abort)
 /adhd-body-doubling start 50    # 50 min deep dive
 /adhd-body-doubling start 25    # Quick fire session
 /adhd-body-doubling stuck       # When you can't move forward
